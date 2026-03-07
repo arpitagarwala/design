@@ -13,11 +13,13 @@
     <meta property="og:url" content="https://design.arpitagarwala.online/" />
     <meta property="og:title" content="UI/UX Design Portfolio – Arpit Agarwala" />
     <meta property="og:description" content="Figma projects, mobile app designs, and creative UI work." />
+    <meta property="og:image" content="https://res.cloudinary.com/dxsja3wy5/image/upload/w_600,h_600,c_fill,g_face,q_auto,f_jpg/v1772893875/94baec3e-4efc-4315-a7a7-db0a22aa1714.png" />
     <meta property="og:site_name" content="Arpit Agarwala" />
     <meta property="og:locale" content="en_IN" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="UI/UX Design Portfolio – Arpit Agarwala" />
     <meta name="twitter:description" content="Figma projects, mobile app designs, and creative UI work." />
+    <meta name="twitter:image" content="https://res.cloudinary.com/dxsja3wy5/image/upload/w_600,h_600,c_fill,g_face,q_auto,f_jpg/v1772893875/94baec3e-4efc-4315-a7a7-db0a22aa1714.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/dxsja3wy5/image/upload/w_32,h_32,c_fill,q_auto,f_png/v1772863840/tab-icon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/dxsja3wy5/image/upload/w_16,h_16,c_fill,q_auto,f_png/v1772863840/tab-icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/dxsja3wy5/image/upload/w_180,h_180,c_fill,q_auto,f_png/v1772863840/tab-icon.png">
@@ -145,24 +147,6 @@
         pointer-events: none;
       }
 
-      /* ── Back link ── */
-      .back-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        padding: 0.45rem 0.9rem;
-        border-radius: 0.75rem;
-        border: 1px solid rgba(255,255,255,0.08);
-        color: rgb(148,163,184);
-        text-decoration: none;
-        font-size: 0.8rem;
-        font-weight: 500;
-        transition: background 0.15s, border-color 0.15s, color 0.15s;
-      }
-      .back-link:hover { background: rgba(255,255,255,0.04); border-color: rgba(34,211,238,0.3); color: rgb(34,211,238); }
-      .dark .back-link { color: rgb(75,85,99); border-color: rgb(229,231,235); }
-      .dark .back-link:hover { color: rgb(8,145,178); border-color: rgba(8,145,178,0.3); }
-
       /* ── Tag pill ── */
       .tag {
         display: inline-flex;
@@ -174,10 +158,26 @@
         padding: 0.25rem 0.625rem;
         border-radius: 9999px;
       }
-      .tag-cyan  { background: rgba(34,211,238,0.1);   color: rgb(34,211,238); }
-      .tag-violet{ background: rgba(167,139,250,0.1);   color: rgb(167,139,250); }
-      .dark .tag-cyan   { background: rgba(8,145,178,0.08);  color: rgb(8,145,178); }
-      .dark .tag-violet { background: rgba(124,58,237,0.08); color: rgb(124,58,237); }
+      .tag-cyan   { background: rgba(34,211,238,0.1);   color: rgb(34,211,238); }
+      .tag-violet { background: rgba(167,139,250,0.1);   color: rgb(167,139,250); }
+      .tag-emerald{ background: rgba(52,211,153,0.1);    color: rgb(52,211,153); }
+      .dark .tag-cyan    { background: rgba(8,145,178,0.08);  color: rgb(8,145,178); }
+      .dark .tag-violet  { background: rgba(124,58,237,0.08); color: rgb(124,58,237); }
+      .dark .tag-emerald { background: rgba(5,150,105,0.08);  color: rgb(5,150,105); }
+
+      /* ── Profile avatar ring ── */
+      .avatar-ring {
+        padding: 3px;
+        background: linear-gradient(135deg, rgb(34,211,238), rgb(99,102,241));
+        border-radius: 1.15rem;
+        display: inline-block;
+        flex-shrink: 0;
+      }
+      .avatar-ring img {
+        display: block;
+        border-radius: 0.9rem;
+        object-fit: cover;
+      }
 
       /* ── Scroll to top ── */
       #scroll-top {
@@ -229,50 +229,76 @@
     <!-- ── Main Content ── -->
     <div class="max-w-5xl mx-auto px-4 pt-10 pb-20">
 
-      <!-- Header -->
-      <header class="mb-10">
-        <a href="https://arpitagarwala.online" class="back-link">
-          <i class="ri-arrow-left-line"></i> Back to Portfolio
-        </a>
+      <!-- ──── PROFILE HERO CARD ──── -->
+      <header class="mb-8">
+        <div class="card p-6 sm:p-8 relative overflow-hidden">
 
-        <div class="mt-6 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
-          <div>
-            <div class="flex flex-wrap items-center gap-2 mb-3">
-              <span class="tag tag-cyan"><i class="ri-palette-line"></i> UI / UX Design</span>
-              <span class="tag tag-violet"><i class="ri-artboard-2-line"></i> Figma</span>
-            </div>
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-white dark:text-gray-900 leading-tight">
-              Design Portfolio <span class="text-cyan-400">✦</span>
-            </h1>
-            <p class="mt-2.5 text-slate-400 dark:text-gray-500 text-sm sm:text-[0.95rem] max-w-lg leading-relaxed">
-              A curated collection of UI/UX work I've crafted — mobile apps, product screens, and interactive prototypes designed in Figma.
-            </p>
-          </div>
+          <!-- Ambient glow -->
+          <div class="absolute -top-16 -right-16 w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-violet-500/5 rounded-full blur-2xl pointer-events-none"></div>
 
-          <!-- Asset count card -->
-          <div class="card px-4 py-3.5 flex items-center gap-3 shrink-0 self-start sm:self-auto">
-            <div class="w-9 h-9 rounded-full bg-cyan-500/10 dark:bg-cyan-50 flex items-center justify-center">
-              <i class="ri-image-2-line text-cyan-400 dark:text-cyan-600 text-base"></i>
+          <div class="relative flex flex-col sm:flex-row sm:items-center gap-6">
+
+            <!-- Profile picture (Cloudinary face-crop) -->
+            <div class="avatar-ring self-center sm:self-auto">
+              <img
+                src="https://res.cloudinary.com/dxsja3wy5/image/upload/w_200,h_200,c_fill,g_face,q_auto,f_auto/v1772893875/94baec3e-4efc-4315-a7a7-db0a22aa1714.png"
+                alt="Arpit Agarwala"
+                width="112" height="112"
+                class="w-24 h-24 sm:w-28 sm:h-28"
+              />
             </div>
-            <div>
-              <p class="text-xl font-extrabold text-white dark:text-gray-900 leading-none">13</p>
-              <p class="text-xs text-slate-500 dark:text-gray-400 mt-0.5">Design assets</p>
-            </div>
-            <div class="w-px h-8 bg-slate-700/50 dark:bg-gray-200 mx-1"></div>
-            <div class="w-9 h-9 rounded-full bg-red-500/10 dark:bg-red-50 flex items-center justify-center">
-              <i class="ri-video-line text-red-400 dark:text-red-500 text-base"></i>
-            </div>
-            <div>
-              <p class="text-xl font-extrabold text-white dark:text-gray-900 leading-none">1</p>
-              <p class="text-xs text-slate-500 dark:text-gray-400 mt-0.5">Prototype video</p>
+
+            <!-- Text info -->
+            <div class="flex-1 min-w-0 text-center sm:text-left">
+              <div class="flex flex-wrap justify-center sm:justify-start items-center gap-2 mb-3">
+                <span class="tag tag-cyan"><i class="ri-palette-line"></i> UI / UX Design</span>
+                <span class="tag tag-violet"><i class="ri-artboard-2-line"></i> Figma</span>
+                <span class="tag tag-emerald"><i class="ri-map-pin-line"></i> Kolkata, India</span>
+              </div>
+              <h1 class="text-2xl sm:text-3xl font-extrabold text-white dark:text-gray-900 leading-tight">
+                Arpit Agarwala
+              </h1>
+              <p class="text-cyan-400 dark:text-cyan-600 text-sm font-semibold mt-1 mb-2.5 tracking-wide">
+                UI/UX Designer &amp; Creative Builder
+              </p>
+              <p class="text-slate-400 dark:text-gray-500 text-sm leading-relaxed max-w-md">
+                A curated collection of UI/UX work I've crafted — mobile apps, product screens, and interactive prototypes designed in Figma.
+              </p>
+
+              <!-- CTA + Stats row -->
+              <div class="mt-5 flex flex-wrap justify-center sm:justify-start items-center gap-3">
+                <a
+                  href="https://arpitagarwala.online"
+                  target="_blank" rel="noopener"
+                  class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-lg bg-cyan-500 hover:bg-cyan-400 active:bg-cyan-600 text-white text-sm font-semibold transition-colors shadow-md shadow-cyan-500/20"
+                >
+                  <i class="ri-user-smile-line"></i> Know Me
+                </a>
+
+                <!-- Divider -->
+                <div class="w-px h-6 bg-slate-700 dark:bg-gray-300"></div>
+
+                <!-- Asset count -->
+                <div class="flex items-center gap-1.5 text-sm">
+                  <i class="ri-image-2-line text-cyan-400 dark:text-cyan-600"></i>
+                  <span class="font-bold text-white dark:text-gray-900">12</span>
+                  <span class="text-slate-500 dark:text-gray-400">designs</span>
+                </div>
+                <div class="flex items-center gap-1.5 text-sm">
+                  <i class="ri-video-line text-red-400 dark:text-red-500"></i>
+                  <span class="font-bold text-white dark:text-gray-900">1</span>
+                  <span class="text-slate-500 dark:text-gray-400">prototype</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="mt-8 h-px bg-slate-700/50 dark:bg-gray-200"></div>
+        <div class="mt-6 h-px bg-slate-700/50 dark:bg-gray-200"></div>
       </header>
 
-      <!-- Masonry Gallery -->
+      <!-- ──── MASONRY GALLERY ──── -->
       <div class="masonry" id="gallery">
 
         <!-- 01 – Prototype Video -->
@@ -438,11 +464,11 @@
       </div>
       <!-- end .masonry -->
 
-      <!-- Footer -->
+      <!-- ──── FOOTER ──── -->
       <footer class="mt-12 text-center py-3.5 px-6 rounded-2xl bg-slate-800/50 dark:bg-white border border-slate-700/30 dark:border-gray-200 text-sm text-slate-500 dark:text-gray-400">
         &copy; 2026 Arpit Agarwala. Engineered with <span class="text-red-400">&#10084;&#65039;</span>
         &nbsp;&middot;&nbsp;
-        <a href="https://arpitagarwala.online" class="text-cyan-400 dark:text-cyan-600 hover:underline">arpitagarwala.online</a>
+        <a href="https://arpitagarwala.online" target="_blank" rel="noopener" class="text-cyan-400 dark:text-cyan-600 hover:underline">arpitagarwala.online</a>
       </footer>
 
     </div>
@@ -464,11 +490,11 @@
         syncThemeIcon();
       });
 
-      /* ── Lightbox helpers ── */
-      const lb     = document.getElementById('lightbox');
-      const lbImg  = document.getElementById('lb-img');
-      const lbVid  = document.getElementById('lb-video');
-      const lbVSrc = document.getElementById('lb-video-src');
+      /* ── Lightbox ── */
+      var lb     = document.getElementById('lightbox');
+      var lbImg  = document.getElementById('lb-img');
+      var lbVid  = document.getElementById('lb-video');
+      var lbVSrc = document.getElementById('lb-video-src');
 
       function openLightbox(type, src) {
         if (type === 'image') {
@@ -493,18 +519,11 @@
         document.body.style.overflow = '';
       }
 
-      /* Close on backdrop click */
-      lb.addEventListener('click', function (e) {
-        if (e.target === lb) closeLightbox();
-      });
-      /* Close on button */
+      lb.addEventListener('click', function (e) { if (e.target === lb) closeLightbox(); });
       document.getElementById('lb-close').addEventListener('click', closeLightbox);
-      /* Close on Escape */
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closeLightbox();
-      });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
 
-      /* ── Wire up gallery items ── */
+      /* ── Wire gallery items ── */
       document.querySelectorAll('.gallery-item').forEach(function (el) {
         el.addEventListener('click', function () {
           openLightbox(el.dataset.type, el.dataset.src);
