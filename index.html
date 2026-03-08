@@ -26,19 +26,22 @@
     <link rel="shortcut icon" href="https://res.cloudinary.com/dxsja3wy5/image/upload/w_32,h_32,c_fill,q_auto,f_png/v1772863840/tab-icon.png">
 
     <!-- Cross-domain theme sync: read ?theme= param first, then localStorage, then OS preference -->
+    <!-- NOTE: this site's CSS is inverted — the .dark class renders the LIGHT visual theme.
+         So: visual dark = no .dark class, visual light = .dark class present.
+         The ?theme= param and localStorage always store the VISUAL name (dark/light). -->
     <script>
       (function () {
         var p = new URLSearchParams(window.location.search).get('theme');
         if (p === 'dark' || p === 'light') {
           localStorage.setItem('theme', p);
-          if (p === 'dark') {
+          if (p === 'light') {
             document.documentElement.classList.add('dark');
           } else {
             document.documentElement.classList.remove('dark');
           }
         } else {
           var t = localStorage.getItem('theme');
-          if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          if (t === 'light' || (!t && !window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
           } else {
             document.documentElement.classList.remove('dark');
@@ -411,8 +414,10 @@
     </div>
 
     <script>
+      // CSS is inverted: .dark class = visually light, no .dark = visually dark.
+      // So the visual theme name is the OPPOSITE of the class state.
       function getTheme() {
-        return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        return document.documentElement.classList.contains('dark') ? 'light' : 'dark';
       }
 
       function updateCrossLinks() {
